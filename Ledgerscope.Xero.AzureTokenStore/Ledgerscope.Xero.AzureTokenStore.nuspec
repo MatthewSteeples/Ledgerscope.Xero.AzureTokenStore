@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Ledgerscope</authors>
+    <owners>Ledgerscope</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library for using Azure Table Storage as a backing store for Xero auth tokens</description>
+    <copyright>Copyright 2016</copyright>
+    </metadata>
+</package>

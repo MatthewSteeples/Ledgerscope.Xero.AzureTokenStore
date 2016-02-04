@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
+    <id>Ledgerscope.Xero.AzureTokenStore</id>
+    <version>1.0.0.0</version>
+    <title>Ledgerscope.Xero.AzureTokenStore</title>
     <authors>Ledgerscope</authors>
     <owners>Ledgerscope</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

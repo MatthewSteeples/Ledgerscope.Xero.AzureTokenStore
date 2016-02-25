@@ -25,7 +25,7 @@ namespace Ledgerscope.Xero.AzureTokenStore
 
         protected override string BuildRowKey()
         {
-            return Value.OrganisationId;
+            return Value.OrganisationId ?? string.Empty;
         }
     }
 }

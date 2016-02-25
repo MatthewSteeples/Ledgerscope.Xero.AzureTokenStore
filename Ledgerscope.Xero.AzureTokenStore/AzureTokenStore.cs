@@ -10,19 +10,19 @@ namespace Ledgerscope.Xero.AzureTokenStore
 {
     public class AzureTokenStore : ITokenStore
     {
-        private readonly IBulkAtsFactory<XeroTokenAdapter> _tokenFactory; 
+        private readonly IBulkAtsFactory<XeroTokenAdapter> _tokenFactory;
 
-        public AzureTokenStore(IAzureHelper azureHelper) 
-            : this(new BulkAtsFactory<XeroTokenAdapter>(new BulkAtsLoader<XeroTokenAdapter>(azureHelper),azureHelper))
+        public AzureTokenStore(IAzureHelper azureHelper)
+            : this(new BulkAtsFactory<XeroTokenAdapter>(new BulkAtsLoader<XeroTokenAdapter>(azureHelper), azureHelper))
         {
-            
+
         }
 
         public AzureTokenStore(IBulkAtsFactory<XeroTokenAdapter> tokenFactory)
         {
             _tokenFactory = tokenFactory;
         }
-         
+
         public IToken Find(string user)
         {
             return _tokenFactory.Loader.GetByPK(user).FirstOrDefault()?.Value;
@@ -42,7 +42,7 @@ namespace Ledgerscope.Xero.AzureTokenStore
         public void Delete(IToken token)
         {
             var loader = _tokenFactory.Loader;
-            var aToken = loader.GetByPKRK(token.UserId, token.OrganisationId);
+            var aToken = loader.GetByPKRK(token.UserId, token.OrganisationId ?? "");
             using (var tokenSaver = _tokenFactory.Saver)
                 tokenSaver.DeleteItem(aToken);
 

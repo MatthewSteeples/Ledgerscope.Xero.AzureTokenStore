@@ -30,14 +30,14 @@ namespace Ledgerscope.Xero.AzureTokenStore
 
         public string UserId { get; set; }
         public string OrganisationId { get; set; }
-        public string ConsumerKey { get; }
-        public string ConsumerSecret { get; }
-        public string TokenKey { get; }
-        public string TokenSecret { get; }
-        public string Session { get; }
-        public DateTime? ExpiresAt { get; }
-        public DateTime? SessionExpiresAt { get; }
-        public bool HasExpired { get; }
-        public bool HasSessionExpired { get; }
+        public string ConsumerKey { get; set; }
+        public string ConsumerSecret { get; set; }
+        public string TokenKey { get; set; }
+        public string TokenSecret { get; set; }
+        public string Session { get; set; }
+        public DateTime? ExpiresAt { get; set; }
+        public DateTime? SessionExpiresAt { get; set; }
+        public bool HasExpired { get; set; }
+        public bool HasSessionExpired { get; set; }
     }
 }

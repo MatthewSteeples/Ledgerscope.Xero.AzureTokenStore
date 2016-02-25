@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace Ledgerscope.Xero.AzureTokenStore
 {
-    public class AzureRequestTokenStore : AzureTokenStore<RequestTokenAdapter>
+    public class AzureRequestTokenStore : AzureTokenStore<XeroRequestTokenAdapter>
     {
         public AzureRequestTokenStore(IAzureHelper azureHelper)
-            : this(new BulkAtsFactory<RequestTokenAdapter>(new BulkAtsLoader<RequestTokenAdapter>(azureHelper), azureHelper))
+            : this(new BulkAtsFactory<XeroRequestTokenAdapter>(new BulkAtsLoader<XeroRequestTokenAdapter>(azureHelper), azureHelper))
         {
         }
 
-        public AzureRequestTokenStore(IBulkAtsFactory<RequestTokenAdapter> tokenFactory) : base(tokenFactory)
+        public AzureRequestTokenStore(IBulkAtsFactory<XeroRequestTokenAdapter> tokenFactory) : base(tokenFactory)
         {
         }
 
-        protected override RequestTokenAdapter GetAdapter(XeroToken token)
+        protected override XeroRequestTokenAdapter GetAdapter(XeroToken token)
         {
-            return new RequestTokenAdapter(token);
+            return new XeroRequestTokenAdapter(token);
         }
     }
 }

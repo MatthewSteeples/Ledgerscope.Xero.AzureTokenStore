@@ -8,13 +8,13 @@ using Xero.Api.Infrastructure.Interfaces;
 
 namespace Ledgerscope.Xero.AzureTokenStore
 {
-    public class RequestTokenAdapter : XeroTokenAdapter
+    public class XeroRequestTokenAdapter : XeroTokenAdapter
     {
-        public RequestTokenAdapter()
+        public XeroRequestTokenAdapter()
         {
         }
 
-        public RequestTokenAdapter(XeroToken token) : base(token)
+        public XeroRequestTokenAdapter(XeroToken token) : base(token)
         {
         }
 

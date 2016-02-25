@@ -15,6 +15,11 @@ namespace Ledgerscope.Xero.AzureTokenStore
 
         public XeroToken(IToken token)
         {
+            CopyFrom(token);
+        }
+
+        internal void CopyFrom(IToken token)
+        {
             this.UserId = token.UserId;
             this.OrganisationId = token.OrganisationId;
             this.ConsumerKey = token.ConsumerKey;

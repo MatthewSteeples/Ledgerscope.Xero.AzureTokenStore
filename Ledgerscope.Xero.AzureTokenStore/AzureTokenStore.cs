@@ -8,17 +8,17 @@ using Xero.Api.Infrastructure.Interfaces;
 
 namespace Ledgerscope.Xero.AzureTokenStore
 {
-    public class AzureTokenStore : ITokenStore
+    public abstract class AzureTokenStore<T> : ITokenStore where T : XeroTokenAdapter, new()
     {
-        private readonly IBulkAtsFactory<XeroTokenAdapter> _tokenFactory;
+        private readonly IBulkAtsFactory<T> _tokenFactory;
 
         public AzureTokenStore(IAzureHelper azureHelper)
-            : this(new BulkAtsFactory<XeroTokenAdapter>(new BulkAtsLoader<XeroTokenAdapter>(azureHelper), azureHelper))
+            : this(new BulkAtsFactory<T>(new BulkAtsLoader<T>(azureHelper), azureHelper))
         {
 
         }
 
-        public AzureTokenStore(IBulkAtsFactory<XeroTokenAdapter> tokenFactory)
+        public AzureTokenStore(IBulkAtsFactory<T> tokenFactory)
         {
             _tokenFactory = tokenFactory;
         }
@@ -33,11 +33,13 @@ namespace Ledgerscope.Xero.AzureTokenStore
             var xeroToken = new XeroToken(token);
             using (var tokenSaver = _tokenFactory.Saver)
             {
-                tokenSaver.AddItem(new XeroTokenAdapter(xeroToken));
+                tokenSaver.AddItem(GetAdapter(xeroToken));
                 tokenSaver.Flush();
             }
             _tokenFactory.Loader.ClearCache();
         }
+
+        protected abstract T GetAdapter(XeroToken token);
 
         public void Delete(IToken token)
         {

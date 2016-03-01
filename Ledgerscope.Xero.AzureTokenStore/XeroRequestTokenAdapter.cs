@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ledgerscope.AzureUtils;
 using Xero.Api.Infrastructure.Interfaces;
+using Xero.Api.Infrastructure.OAuth;
 
 namespace Ledgerscope.Xero.AzureTokenStore
 {
@@ -14,7 +15,7 @@ namespace Ledgerscope.Xero.AzureTokenStore
         {
         }
 
-        public XeroRequestTokenAdapter(XeroToken token) : base(token)
+        public XeroRequestTokenAdapter(Token token) : base(token)
         {
         }
 

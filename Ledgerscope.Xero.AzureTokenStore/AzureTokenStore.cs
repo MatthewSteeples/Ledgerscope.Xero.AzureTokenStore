@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Ledgerscope.AzureUtils;
 using Xero.Api.Infrastructure.Interfaces;
+using Xero.Api.Infrastructure.OAuth;
+using Ledgerscope.Xero.AzureTokenStore.Helpers;
 
 namespace Ledgerscope.Xero.AzureTokenStore
 {
@@ -30,7 +32,13 @@ namespace Ledgerscope.Xero.AzureTokenStore
 
         public void Add(IToken token)
         {
-            var xeroToken = new XeroToken(token);
+            var xeroToken = token as Token;
+            if (xeroToken == null)
+            {
+                xeroToken = new Token();
+                xeroToken.CopyFrom(token);
+            }
+
             using (var tokenSaver = _tokenFactory.Saver)
             {
                 tokenSaver.AddItem(GetAdapter(xeroToken));
@@ -39,7 +47,7 @@ namespace Ledgerscope.Xero.AzureTokenStore
             _tokenFactory.Loader.ClearCache();
         }
 
-        protected abstract T GetAdapter(XeroToken token);
+        protected abstract T GetAdapter(Token token);
 
         public void Delete(IToken token)
         {

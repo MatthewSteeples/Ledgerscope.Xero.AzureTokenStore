@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xero.Api.Infrastructure.OAuth;
 
 namespace Ledgerscope.Xero.AzureTokenStore
 {
@@ -18,7 +19,7 @@ namespace Ledgerscope.Xero.AzureTokenStore
         {
         }
 
-        protected override XeroRequestTokenAdapter GetAdapter(XeroToken token)
+        protected override XeroRequestTokenAdapter GetAdapter(Token token)
         {
             return new XeroRequestTokenAdapter(token);
         }

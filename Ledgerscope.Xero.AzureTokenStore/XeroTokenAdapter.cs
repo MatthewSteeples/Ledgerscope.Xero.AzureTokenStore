@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Ledgerscope.AzureUtils;
 using Xero.Api.Infrastructure.Interfaces;
+using Xero.Api.Infrastructure.OAuth;
 
 namespace Ledgerscope.Xero.AzureTokenStore
 {
-    public class XeroTokenAdapter : EntityAdapter<XeroToken>
+    public class XeroTokenAdapter : EntityAdapter<Token>
     {
         public XeroTokenAdapter()
         {
         }
 
-        public XeroTokenAdapter(XeroToken token) : base(token)
+        public XeroTokenAdapter(Token token) : base(token)
         {
         }
 

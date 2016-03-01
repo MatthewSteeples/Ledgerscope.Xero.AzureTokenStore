@@ -85,10 +85,10 @@
     <Compile Include="AzureAccessTokenStore.cs" />
     <Compile Include="AzureRequestTokenStore.cs" />
     <Compile Include="AzureTokenStore.cs" />
+    <Compile Include="Helpers\TokenHelper.cs" />
     <Compile Include="XeroRequestTokenAdapter.cs" />
     <Compile Include="XeroTokenAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XeroToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

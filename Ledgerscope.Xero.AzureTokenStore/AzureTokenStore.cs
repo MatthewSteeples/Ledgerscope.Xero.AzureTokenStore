@@ -44,7 +44,6 @@ namespace Ledgerscope.Xero.AzureTokenStore
                 tokenSaver.AddItem(GetAdapter(xeroToken));
                 tokenSaver.Flush();
             }
-            _tokenFactory.Loader.ClearCache();
         }
 
         protected abstract T GetAdapter(Token token);
@@ -55,8 +54,6 @@ namespace Ledgerscope.Xero.AzureTokenStore
             var aToken = loader.GetByPKRK(token.UserId, token.OrganisationId ?? "");
             using (var tokenSaver = _tokenFactory.Saver)
                 tokenSaver.DeleteItem(aToken);
-
-            loader.ClearCache();
         }
     }
 }
